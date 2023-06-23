@@ -2,3 +2,9 @@ body {
   padding-top: 3.5rem;
   font-family: "Roboto", sans-serif;
 }
+
+
+@import "primeng/resources/themes/lara-light-blue/theme.css";
+@import "primeng/resources/primeng.css";
+
+@import 'primeflex/primeflex.css';

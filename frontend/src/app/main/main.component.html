@@ -1,0 +1,34 @@
+<div class="grid nested-grid m-4 bg-blue-200">
+  <div class="col-12">
+    <div class="text-center p-3 border-round-sm bg-primary font-bold ">Question</div>
+  </div>
+  <div class="col-8 p-0">
+    <div class="grid m-0">
+      <div class="col-12">
+        <div class="text-center p-3 border-round-sm bg-primary font-bold">
+          <p-button *ngIf="!isRecording" (click)="startRecording()" [disabled]="isRecording"
+            icon="fa-solid fa-microphone" styleClass="p-button-rounded p-button-success"></p-button>
+          <p-button *ngIf="isRecording" (click)="stopRecording()" [disabled]="!isRecording" icon="fa-solid fa-stop"
+            styleClass="p-button-rounded p-button-danger"></p-button>
+          <p class="mt-1" *ngIf="isRecording">Listening...</p>
+        </div>
+      </div>
+      <div class="col-12">
+        <div class="text-center p-3 border-round-sm bg-primary font-bold">
+          <audio *ngIf="audioUrl" controls [src]="audioUrl"></audio>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-4">
+    <div class="text-center p-3 border-round-sm h-full bg-primary font-bold">Recorded Text</div>
+  </div>
+</div>
+
+
+<!-- <div>
+  <button pButton type="button" label="Record" (click)="startRecording()" [disabled]="recording"></button>
+  <button pButton type="button" label="Stop" (click)="stopRecording()" [disabled]="!recording"></button>
+  <button pButton type="button" label="Play" (click)="playRecording()" [disabled]="recording || !audioUrl"></button>
+</div>
+<div #waveform></div> -->

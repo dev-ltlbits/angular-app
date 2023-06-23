@@ -3,9 +3,10 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { HomeComponent } from './modules/general/home/home.component';
 import { NotFoundComponent } from './modules/general/not-found/not-found.component';
+import { MainComponent } from './main/main.component';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent, },
+  { path: '', component: MainComponent, },
   {
     path: 'landing-page',
     loadChildren: () => import('./modules/application/example-landing-page/tutorial.module')
@@ -60,7 +61,7 @@ const routes: Routes = [
     path: 'httpclient',
     loadChildren: () => import('./modules/application/example-httpclient/items.module')
       .then(mod => mod.ItemsModule)
-  },  {
+  }, {
     path: 'bootstrap',
     loadChildren: () => import('./modules/application/example-bootstrap/tutorial.module')
       .then(mod => mod.TutorialModule)
@@ -110,8 +111,8 @@ const routes: Routes = [
     // initialNavigation: 'enabledBlocking'
     useHash: false,
     anchorScrolling: 'enabled',
-    scrollPositionRestoration: 'enabled'    
-})],
+    scrollPositionRestoration: 'enabled'
+  })],
   exports: [RouterModule],
   declarations: []
 })

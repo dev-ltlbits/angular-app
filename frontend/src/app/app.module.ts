@@ -10,14 +10,18 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { HeaderModule } from './components/header/header.module';
 import { FooterModule } from './components/footer/footer.module';
+import { ButtonModule } from 'primeng/button';
+import { MainComponent } from './main/main.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     NotFoundComponent,
+    MainComponent
   ],
   imports: [
+    ButtonModule,
     BrowserModule,
     AppRoutingModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
