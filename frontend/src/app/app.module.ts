@@ -12,6 +12,8 @@ import { HeaderModule } from './components/header/header.module';
 import { FooterModule } from './components/footer/footer.module';
 import { ButtonModule } from 'primeng/button';
 import { MainComponent } from './main/main.component';
+import { SkeletonModule } from 'primeng/skeleton';
+import { DataService } from './data.service';
 
 @NgModule({
   declarations: [
@@ -31,10 +33,11 @@ import { MainComponent } from './main/main.component';
       registrationStrategy: 'registerWhenStable:30000'
     }),
     HttpClientModule,
+    SkeletonModule,
     HeaderModule,
     FooterModule,
   ],
-  providers: [],
+  providers: [DataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

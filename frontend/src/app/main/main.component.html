@@ -1,27 +1,54 @@
-<div class="grid nested-grid m-4 bg-blue-200">
-  <div class="col-12">
-    <div class="text-center p-3 border-round-sm bg-primary font-bold ">Question</div>
+<div class="grid nested-grid m-4 p-5 bg-blue-200">
+  <div *ngIf="!question && question.length == 0" class="col-12">
+    <p-skeleton height="4rem" styleClass="mb-2"></p-skeleton>
   </div>
-  <div class="col-8 p-0">
-    <div class="grid m-0">
-      <div class="col-12">
-        <div class="text-center p-3 border-round-sm bg-primary font-bold">
-          <p-button *ngIf="!isRecording" (click)="startRecording()" [disabled]="isRecording"
-            icon="fa-solid fa-microphone" styleClass="p-button-rounded p-button-success"></p-button>
-          <p-button *ngIf="isRecording" (click)="stopRecording()" [disabled]="!isRecording" icon="fa-solid fa-stop"
-            styleClass="p-button-rounded p-button-danger"></p-button>
-          <p class="mt-1" *ngIf="isRecording">Listening...</p>
-        </div>
-      </div>
-      <div class="col-12">
-        <div class="text-center p-3 border-round-sm bg-primary font-bold">
-          <audio *ngIf="audioUrl" controls [src]="audioUrl"></audio>
-        </div>
-      </div>
+  <div class="col-8">
+    <ng-container *ngIf="question && question.length > 0">
+      Question Text:
+    </ng-container>
+    <div *ngIf="question && question.length > 0" class="text-center p-4 border-round-sm bg-primary font-bold ">{{
+      question }}</div>
+  </div>
+  <div class="col-4">
+    <ng-container *ngIf="questionAudio">
+      Question Audio:
+    </ng-container>
+    <div *ngIf="questionAudio" class="text-center p-1 border-round-sm bg-primary font-bold">
+      <audio id="player" controls autoplay>
+        <source [src]="questionAudio" type="audio/wav">
+        Your browser does not support the audio element.
+      </audio>
+    </div>
+  </div>
+
+  <div class="col-8">
+    Record Here:
+    <div class="text-center p-3 border-round-sm bg-primary font-bold">
+      <p-button *ngIf="!isRecording" (click)="startRecording()" [disabled]="isRecording" icon="fa-solid fa-microphone"
+        styleClass="p-button-rounded p-button-success"></p-button>
+      <p-button *ngIf="isRecording" (click)="stopRecording()" [disabled]="!isRecording" icon="fa-solid fa-stop"
+        styleClass="p-button-rounded p-button-danger"></p-button>
+      <p class="mt-1" *ngIf="isRecording">Listening...</p>
     </div>
   </div>
   <div class="col-4">
-    <div class="text-center p-3 border-round-sm h-full bg-primary font-bold">Recorded Text</div>
+    <ng-container *ngIf="recordedData.url">
+      Recorded Audio:
+    </ng-container>
+    <div *ngIf="recordedData.url" class="text-center p-3 border-round-sm bg-primary font-bold">
+      <audio id="player2" controls autoplay>
+        <source [src]="recordedData.url" type="audio/wav">
+        Your browser does not support the audio element.
+      </audio>
+    </div>
+  </div>
+  <div class="col-12">
+    <ng-container *ngIf="recordedData.transcription">
+      Recorded Transcript:
+    </ng-container>
+    <div *ngIf="recordedData.transcription" class="text-center p-3 border-round-sm h-full bg-primary font-bold">{{
+      recordedData.transcription }}
+    </div>
   </div>
 </div>
 

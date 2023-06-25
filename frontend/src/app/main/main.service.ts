@@ -16,11 +16,11 @@ export class MainService {
   startRecording() {
     let options: any = {
       type: 'audio',
-      numberOfAudioChannels: 2,
-      checkForInactiveTracks: true,
-      bufferSize: 16384,
-      sampleRate: 44100,
-      desiredSampRate: 16000  // this will give you .wav format
+      // numberOfAudioChannels: 2,
+      // checkForInactiveTracks: true,
+      // bufferSize: 16384,
+      // sampleRate: 44100,
+      // desiredSampRate: 16000
     };
 
     this.recorder = new RecordRTC.StereoAudioRecorder(this.stream, options);
